@@ -30,7 +30,7 @@ Miner name:
 
 Installation URL:
 
-``https://github.com/DarkRiDDeR/stanminer-client-hiveos/releases/download/v0.0.1-alpha/stanstart-0.0.1alpha.tar.gz```
+```https://github.com/DarkRiDDeR/stanminer-client-hiveos/releases/download/v0.0.1-alpha/stanstart-0.0.1alpha.tar.gz```
 
 Hash algorithm: 
 
