@@ -4,12 +4,12 @@ Hive Os client for StanMiner (https://stanvps.ddns.net/)
 
 There is a problem with determining the correct miner and algorithm in the Hive OS panel
 
-Hashrate information is taken from the Stun iner log line:
+Hashrate information is taken from the Stun Miner log line:
 
 ``2024-11-04 12:29:34,501 - INFO - STAN LOG LINE: hashrate - 13372.5 H/S``
 
 **Hive OS does not support the installation of two custom miners.**
-A possible solution is to replace one of the standard miner. See "Replacing rhminer with stanminer to run two custom miners"
+A possible solution is to replace one of the standard miner. See "Replace rhminer with stanminer to run two custom miners"
 
 # Install
 
@@ -57,7 +57,7 @@ Extra config arguments: ``--wallet %WAL% --threads 28``
 
 ![image](screens/3.jpg)
 
-# Replacing rhminer with stanminer to run two custom miners 
+# Replace rhminer with stanminer to run two custom miners 
 
 Hive OS does not support the installation of two custom miners. A possible solution is to replace one of the standard miner. An example will be for replacing the rhminer-2.3 miner
 
