@@ -1,5 +1,16 @@
 Hive Os client for StanMiner (https://stanvps.ddns.net/)
 
+# Info
+
+There is a problem with determining the correct miner and algorithm in the Hive OS panel
+
+Hashrate information is taken from the Stun iner log line:
+
+``2024-11-04 12:29:34,501 - INFO - STAN LOG LINE: hashrate - 13372.5 H/S``
+
+**Hive OS does not support the installation of two custom miners.**
+A possible solution is to replace one of the standard miner. See "Replacing rhminer with stanminer to run two custom miners"
+
 # Install
 
 Install the necessary packages if you haven't already:
@@ -10,43 +21,89 @@ sudo apt install cron screen lm-sensors python3-pip python3-requests python3-psu
 
 ## New wallet
 
-Coin (create new):
+Coin (create new): ``STAN``
 
-```STAN```
+Address (your TON address for USDT): ``UQCFVXtlCUjTY5n1zdwXbALgsbYQK1WrZUfAzU3shSyMx5D8``
 
-Address (your TON address for USDT):
+Name: ``USDT (TON)``
 
-```UQCFVXtlCUjTY5n1zdwXbALgsbYQK1WrZUfAzU3shSyMx5D8```
+![image](screens/1.jpg)
 
-Name:
+## Flight Sheet
 
-``USDT (TON)``
+Coin: ``Stan``
 
-## Custom miner
+Wallet: ``USDT (TON)``
 
-Miner name:
+Pool: ``Configure in miner``
 
-``stan-miner``
+Miner: ``Custom``
 
-Installation URL:
+![image](screens/2.jpg)
 
-``https://github.com/DarkRiDDeR/stanminer-client-hiveos/releases/download/v0.0.1-alpha/stanstart-0.0.1alpha.tar.gz```
+## Custom miner config
 
-Hash algorithm: 
+Miner name: ``stanstart``
 
-``---``
+Installation URL: ``https://github.com/DarkRiDDeR/stanminer-client-hiveos/releases/download/v0.0.2-alpha/stanstart-0.0.2alpha.tar.gz``
 
-Wallet and worker template:
+Hash algorithm: ``---``
 
-```%WORKER_NAME%```
+Wallet and worker template: ``%WORKER_NAME%``
 
-Pool URL:
+Pool URL: ``https://stanvps.ddns.net:8101``
 
-```https://stanvps.ddns.net:8101```
+Extra config arguments: ``--wallet %WAL% --threads 28``
 
-Extra config arguments:
+![image](screens/3.jpg)
 
-```--wallet %WAL% --threads 28```
+# Replacing rhminer with stanminer to run two custom miners 
+
+Hive OS does not support the installation of two custom miners. A possible solution is to replace one of the standard miner. An example will be for replacing the rhminer-2.3 miner
+
+Install rhminer 2.3: ``apt install hive-miners-rhminer hive-miners-rhminer-2.3``
+
+open dir: ``cd /hive/miners/``
+
+then: ``ls``
+
+example result: ``custom/  rhminer/  srbminer/  teamredminer/``
+
+delete rhminer dir: ``rm -rf rhminer``
+
+download special version of stanminer client: ``wget https://github.com/DarkRiDDeR/stanminer-client-hiveos/releases/download/v0.0.2-alpha/replace_rhminer2.3_stanstart-0.0.2alpha.tar.gz``
+
+untar: ``tar -xzf replace_rhminer2.3_stanstart-0.0.2alpha.tar.gz``
+
+**or combined command:**
+
+``apt install hive-miners-rhminer hive-miners-rhminer-2.3 && cd /hive/miners/ && rm -rf rhminer && (rm -f replace_rhminer2.3_* || true) && wget https://github.com/DarkRiDDeR/stanminer-client-hiveos/releases/download/v0.0.2-alpha/replace_rhminer2.3_stanstart-0.0.2alpha.tar.gz && tar -xzf replace_rhminer2.3_stanstart-0.0.2alpha.tar.gz``
+
+## Flight Sheet
+
+Coin: ``Stan``
+
+Wallet: ``USDT (TON)``
+
+Pool: ``Configure in miner``
+
+Miner: ``RandomHash miner``
+
+![image](screens/4.jpg)
+
+## Miner config
+
+Wallet and worker template: ``%WORKER_NAME%``
+
+Pool URL: ``stanvps.ddns.net:8101``
+
+Extra config arguments: ``--wallet %WAL% --threads 28``
+
+Version: ``2.3``
+
+![image](screens/5.jpg)
+
+![image](screens/6.jpg)
 
 # Code examples
 
