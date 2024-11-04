@@ -6,4 +6,4 @@ cd `dirname $0`
 CUSTOM_LOG_BASEDIR=`dirname "$CUSTOM_LOG_BASENAME"`
 [[ ! -d $CUSTOM_LOG_BASEDIR ]] && mkdir -p $CUSTOM_LOG_BASEDIR
 
-eval "python3 stan-client-new.py $CONF_STAN_EXTRA_ARGS --worker $CONF_STAN_WORKER 2>&1 | tee $CUSTOM_LOG_BASENAME.log"
+eval "python3 stan-client-new.py $CONF_STAN_EXTRA_ARGS --worker $CONF_STAN_WORKER 2>&1 | tee $CUSTOM_LOG_BASENAME"
